@@ -23,9 +23,37 @@ const questions = () => {
 
       {
         type: 'input',
-        name: 'question',
-        message: 'What is your purpose? (Required)'
-      }
+        name: 'description',
+        message: 'describe your project (Required)'
+      },
+      {
+        type: 'input',
+        name: 'installation',
+        message: 'provide installation instructions (Required)'
+      },
+      {
+        type: 'input',
+        name: 'usage',
+        message: 'provide usage info (Required)'
+      },
+      {
+        type: 'input',
+        name: 'contribution',
+        message: 'provide contribution guidelines (Required)'
+      },
+      {
+        type: 'list',
+        name: 'license',
+        message: 'which license do you have?',
+        choices: ['one', 'two', 'three']
+      },
+      {
+        type: 'input',
+        name: 'github',
+        message: 'what is your github username?'
+      },
+
+
     ])
 }
 
