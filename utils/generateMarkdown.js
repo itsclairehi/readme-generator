@@ -1,4 +1,25 @@
 // function to generate markdown for README
+// const generateAbout = aboutText => {
+//   if (!aboutText) {
+//     return '';
+//   }
+
+//   return `
+//     <section class="my-3" id="about">
+//       <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
+//       <p>${aboutText}</p>
+//     </section>
+//   `;
+// };
+
+const screenshotUrl = (title, screenshot) => {
+  if (!screenshot) {
+    return '';
+  }
+
+  return `![${title}](${screenshot})`
+}
+
 function generateMarkdown(data) {
   return `
   # ${data.title}
@@ -7,15 +28,17 @@ function generateMarkdown(data) {
 
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Credits](#credits)
+  * [Contributing](#contributing)
+  * [Tests](#tests)
   * [License](#license)
+  * [Questions](#questions)
 
   ## Description
   ${data.description}
   ## Installation
   ${data.installation}
   ## Usage
-  ${data.usage}
+  ${data.usage} ${screenshotUrl(data.screenshotTitle, data.screenshots)}
   ## Contributing
   ${data.contribution}
   ## Tests
@@ -25,6 +48,7 @@ function generateMarkdown(data) {
 
   ## Questions? 
   [my github](https://www.github.com/${data.github})
+
   Still more questions? Contact me at ${data.email}
 `;
 }

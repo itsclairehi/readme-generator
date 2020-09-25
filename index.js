@@ -20,32 +20,73 @@ const questions = () => {
           }
         }
       },
-
       {
         type: 'input',
         name: 'description',
-        message: 'describe your project (Required)'
+        message: 'describe your project (Required)',
+        validate: nameInput => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log('Please enter a description!');
+            return false;
+          }
+        }
       },
       {
         type: 'input',
         name: 'installation',
-        message: 'provide installation instructions (Required)'
+        message: 'provide installation instructions'
       },
       {
         type: 'input',
         name: 'usage',
-        message: 'provide usage info (Required)'
+        message: 'provide usage info'
+      },
+      {
+        type: 'confirm',
+        name: 'confirmScreenshots',
+        message: 'do you want to include screenshots?'
+      },
+      {
+        type: 'input',
+        name: 'screenshots',
+        message: 'enter screenshot url or filepath',
+        when: ({ confirmScreenshots }) => {
+          if (confirmScreenshots) {
+            return true
+          } else {
+            return false
+          }
+        }
+      },
+      {
+      type: 'input',
+        name: 'screenshotTitle',
+        message: 'enter screenshot title',
+        when: ({ confirmScreenshots }) => {
+          if (confirmScreenshots) {
+            return true
+          } else {
+            return false
+          }
+        }
       },
       {
         type: 'input',
         name: 'contribution',
-        message: 'provide contribution guidelines (Required)'
+        message: 'provide contribution guidelines'
+      },
+      {
+        type: 'input',
+        name: 'tests',
+        message: 'provide instructions for tests'
       },
       {
         type: 'list',
         name: 'license',
         message: 'which license do you have?',
-        choices: ['one', 'two', 'three']
+        choices: ['MIT', 'GNU', 'ISC', 'Apache license', 'other']
       },
       {
         type: 'input',
@@ -57,13 +98,9 @@ const questions = () => {
         name: 'email',
         message: 'what is your email?'
       },
-
-
     ])
 }
 
-
-// questions()
 
 // function to write README file
 function writeToFile(data) {
@@ -81,16 +118,15 @@ function writeToFile(data) {
 // function to initialize program
 function init() {
   questions()
-  .then(answers => {
-    return generateMarkdown(answers)
-  })
-  .then(markdown => {
-    return writeToFile(markdown)
-  })
+  .then(answers => 
+     generateMarkdown(answers)
+  )
+  .then(markdown => 
+    writeToFile(markdown)
+  )
   .catch(err => {
     console.log(err);
   });
-
 }
 
 // function call to initialize program
