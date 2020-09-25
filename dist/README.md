@@ -11,5 +11,5 @@
   ## License
 
   ## Questions? 
-  [my github](github.com/itsclairehi)
+  [my github](www.github.com/itsclairehi)
   github.com/itsclairehi
