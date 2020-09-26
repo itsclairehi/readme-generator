@@ -20,6 +20,11 @@ const screenshotUrl = (title, screenshot) => {
   return `![${title}](${screenshot})`
 }
 
+const getBadge = (license) => {
+  return `![badmath](https://img.shields.io/badge/license-${license}-green)`
+}
+
+
 function generateMarkdown(data) {
   return `
   # ${data.title}
@@ -44,7 +49,7 @@ function generateMarkdown(data) {
   ## Tests
   ${data.tests}
   ## License
-  ${data.license}
+  ${getBadge(data.license)}
 
   ## Questions? 
   [my github](https://www.github.com/${data.github})

@@ -20,17 +20,3 @@ WHEN I click on the links in the Table of Contents
 THEN I am taken to the corresponding section of the README
 
 maybe need to use in package.json?
-{
-  "name": "static-site",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "inquirer": "^6.3.1"
-  }
-}
