@@ -1,16 +1,4 @@
 // function to generate markdown for README
-// const generateAbout = aboutText => {
-//   if (!aboutText) {
-//     return '';
-//   }
-
-//   return `
-//     <section class="my-3" id="about">
-//       <h2 class="text-dark bg-primary p-2 display-inline-block">About Me</h2>
-//       <p>${aboutText}</p>
-//     </section>
-//   `;
-// };
 
 const screenshotUrl = (title, screenshot) => {
   if (!screenshot) {
@@ -24,10 +12,19 @@ const getBadge = (license) => {
   return `![badmath](https://img.shields.io/badge/license-${license}-green)`
 }
 
+const getLink = (linkTitle,link) => {
+  if (!link) {
+    return '';
+  }
+
+  return `[${linkTitle}](${link})`
+}
+
 
 function generateMarkdown(data) {
   return `
   # ${data.title}
+  ${getBadge(data.license)}
 
   ## Table of Contents
 
@@ -43,13 +40,16 @@ function generateMarkdown(data) {
   ## Installation
   ${data.installation}
   ## Usage
-  ${data.usage} ${screenshotUrl(data.screenshotTitle, data.screenshots)}
+  ${data.usage} 
+  ${screenshotUrl(data.screenshotTitle, data.screenshots)}
+  
+  ${getLink(data.linkTitle, data.usageLink)}
   ## Contributing
   ${data.contribution}
   ## Tests
   ${data.tests}
   ## License
-  ${getBadge(data.license)}
+  Licensed under the ${data.license} license
 
   ## Questions? 
   [my github](https://www.github.com/${data.github})

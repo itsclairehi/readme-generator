@@ -46,8 +46,9 @@ const questions = () => {
       {
         type: 'confirm',
         name: 'confirmScreenshots',
-        message: 'do you want to include screenshots?'
+        message: 'would you like to include a screenshot?'
       },
+     
       {
         type: 'input',
         name: 'screenshots',
@@ -73,6 +74,35 @@ const questions = () => {
         }
       },
       {
+        type: 'confirm',
+        name: 'confirmLink',
+        message: 'would you like to include a link here?'
+      },
+      {
+        type: 'input',
+          name: 'usageLink',
+          message: 'enter link url',
+          when: ({ confirmLink }) => {
+            if (confirmLink) {
+              return true
+            } else {
+              return false
+            }
+          }
+        },
+        {
+          type: 'input',
+            name: 'linkTitle',
+            message: 'enter link title',
+            when: ({ confirmLink }) => {
+              if (confirmLink) {
+                return true
+              } else {
+                return false
+              }
+            }
+          },
+      {
         type: 'input',
         name: 'contribution',
         message: 'provide contribution guidelines'
@@ -86,7 +116,7 @@ const questions = () => {
         type: 'list',
         name: 'license',
         message: 'which license do you have?',
-        choices: ['MIT', 'GNU', 'ISC', 'Apache license', 'other']
+        choices: ['MIT', 'GNU', 'ISC', 'Apache license']
       },
       {
         type: 'input',
@@ -104,7 +134,6 @@ const questions = () => {
 
 // function to write README file
 function writeToFile(data) {
-  console.log("data?" + data);
   
   fs.writeFile(`./dist/README.md`, data, err => {
     if (err) {
