@@ -17,6 +17,7 @@
   install node to your computer from a browser, then on the command line type 'npm init', then 'npm install inquire', then 'node index' to start the application
   ## Usage
   [walkthrough video](https://drive.google.com/file/d/1jKJLM2TeV5-MQwXGvHvGULQCyEALDE-1/view)
+  Check out the 'dist' folder to see another sample README (will be overwritten with yours once you use the app)
   ## Contributing
   for now this is not open to contribution
   ## Tests
